@@ -9,6 +9,24 @@ from utils.preprocess import _preprocess
 nltk.download('punkt')
 
 
+def _vector_similarity_controller(measure, input_string, dataset_strings):
+    # Select the function to use
+    match measure:
+        case 'tfidf_cosine':
+            trigger_function = _tfidf_cosine_similarity
+
+        case 'tfidf_euclidean':
+            trigger_function = _tfidf_euclidean_distance
+
+        case 'fasttext_cosine':
+            trigger_function = _fasttext
+
+        case _:
+            raise ValueError(f"Unknown similarity measure: {measure}")
+
+    return trigger_function(input_string, dataset_strings)
+
+
 def _tfidf_cosine_similarity(input_string, dataset_strings):
     """Distance metric using TfidfVectorizer."""
     # Prepare vectorizer
@@ -80,21 +98,3 @@ def _fasttext(input_string, dataset_strings):
 
     return np.array([_fasttext_cosine_similarity(
         input_string, text, fasttext_model) for text in dataset_strings])
-
-
-def _vector_similarity_controller(measure, input_string, dataset_strings):
-    # Select the function to use
-    match measure:
-        case 'tfidf_cosine':
-            trigger_function = _tfidf_cosine_similarity
-
-        case 'tfidf_euclidean':
-            trigger_function = _tfidf_euclidean_distance
-
-        case 'fasttext_cosine':
-            trigger_function = _fasttext
-
-        case _:
-            raise ValueError(f"Unknown similarity measure: {measure}")
-
-    return trigger_function(input_string, dataset_strings)
