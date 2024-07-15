@@ -3,7 +3,7 @@ import statistics
 from random import random
 
 
-def getLines(filepath: str, remove_duplicates=False, write_to_cache: bool = False, cache_filepath: str = './temps/output_data.txt') -> list[str]:
+def get_lines(filepath: str, remove_duplicates=False, write_to_cache: bool = False, cache_filepath: str = './temps/output_data.txt') -> list[str]:
 
     if not isinstance(filepath, str):
         return []
@@ -12,7 +12,7 @@ def getLines(filepath: str, remove_duplicates=False, write_to_cache: bool = Fals
         lines: list[str] = read_file.readlines()
         if remove_duplicates:
             lines: set[str] = set(lines)
-        parsed_lines: list[str] = list(map(replaceUseless, lines))
+        parsed_lines: list[str] = list(map(replace_useless, lines))
 
         if write_to_cache == True and isinstance(cache_filepath, str):
             with open(cache_filepath, 'w') as cache_file:
@@ -21,7 +21,7 @@ def getLines(filepath: str, remove_duplicates=False, write_to_cache: bool = Fals
         return parsed_lines
 
 
-def replaceUseless(text: str) -> str:
+def replace_useless(text: str) -> str:
     result: str = re.sub(r"\n|\"", "", text, flags=re.M | re.I)
     result = ' '.join(result.split())
     result = result.lstrip()
