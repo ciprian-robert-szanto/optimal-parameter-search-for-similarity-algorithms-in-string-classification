@@ -99,44 +99,43 @@ BASE_STOP_WORDS: list[str] = [
     "è"]
 
 # Used the word counter to check which ones are more frequent and which one don't make sense
-# CUSTOM_STOP_WORDS: list[str] = [
-#     "1kg", "1lt",
+CUSTOM_STOP_WORDS: list[str] = [
+    "1kg", "1lt",
 
-#     "25cl", "2v",
+    "25cl", "2v",
 
-#     "5kg",
+    "5kg",
 
-#     "75cl",
+    "75cl",
 
-#     "a1",
+    "a1",
 
-#     "ba1", "bt",
+    "ba1", "bt",
 
-#     "cal", "cg", "cl", "cl50", "cm",
+    "cal", "cg", "cl", "cl50", "cm",
 
-#     "de", "ddt", "do",
+    "de", "ddt", "do",
 
-#     "g500", "gr", "gr500",
+    "g500", "gr", "gr500",
 
-#     "ing", "it",
+    "ing", "it",
 
-#     "kg", "kg1", "kg2", "km",
+    "kg", "kg1", "kg2", "km",
 
-#     "litri", "litro", "lt",
+    "litri", "litro", "lt",
 
-#     "mill", "ml",
+    "mill", "ml",
 
-#     "ns", "num",
+    "ns", "num",
 
-#     "or",
+    "or",
 
-#     "pz",
+    "pz",
 
-#     "rif", "ro",
+    "rif", "ro",
 
-#     "sg", "sv",
+    "sg", "sv",
 
-#     "targa", "telaio", "tot"]
-CUSTOM_STOP_WORDS = []
+    "targa", "telaio", "tot"]
 
 EXTENDED_STOP_WORDS: list[str] = BASE_STOP_WORDS + CUSTOM_STOP_WORDS
